@@ -7,10 +7,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from ocr.model.common import Activation
-# import paddle
-# from paddle import ParamAttr
-# import paddle.nn as nn
-# import paddle.nn.functional as F
+
 
 __all__ = ["ResNet_SAST"]
 

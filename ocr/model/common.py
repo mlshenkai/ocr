@@ -12,16 +12,12 @@ class Hswish(nn.Module):
     def forward(self, x):
         return x * F.relu6(x + 3., inplace=self.inplace) / 6.
 
-# out = max(0, min(1, slop*x+offset))
-# paddle.fluid.layers.hard_sigmoid(x, slope=0.2, offset=0.5, name=None)
 class Hsigmoid(nn.Module):
     def __init__(self, inplace=True):
         super(Hsigmoid, self).__init__()
         self.inplace = inplace
 
     def forward(self, x):
-        # torch: F.relu6(x + 3., inplace=self.inplace) / 6.
-        # paddle: F.relu6(1.2 * x + 3., inplace=self.inplace) / 6.
         return F.relu6(1.2 * x + 3., inplace=self.inplace) / 6.
 
 

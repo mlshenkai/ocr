@@ -9,7 +9,6 @@ import torch.nn.functional as F
 from ocr.model.common import Activation
 
 
-
 class ConvBNLayer(nn.Module):
     def __init__(self,
                  in_channels,
@@ -165,15 +164,15 @@ class EASTFPN(nn.Module):
 
         h = f[0]
         g = self.g0_deconv(h)
-        # h = paddle.concat([g, f[1]], axis=1)
+
         h = torch.cat([g, f[1]], dim=1)
         h = self.h1_conv(h)
         g = self.g1_deconv(h)
-        # h = paddle.concat([g, f[2]], axis=1)
+
         h = torch.cat([g, f[2]], dim=1)
         h = self.h2_conv(h)
         g = self.g2_deconv(h)
-        # h = paddle.concat([g, f[3]], axis=1)
+
         h = torch.cat([g, f[3]], dim=1)
         h = self.h3_conv(h)
         g = self.g3_conv(h)

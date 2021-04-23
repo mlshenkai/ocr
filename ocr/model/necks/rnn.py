@@ -11,7 +11,6 @@ class Im2Seq(nn.Module):
         B, C, H, W = x.shape
         assert H == 1
         x = x.squeeze(dim=2)
-        # x = x.transpose([0, 2, 1])  # paddle (NTC)(batch, width, channels)
         x = x.permute(0,2,1)
         return x
 
